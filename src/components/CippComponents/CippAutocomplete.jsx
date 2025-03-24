@@ -99,7 +99,7 @@ export const CippAutoComplete = (props) => {
       setGetRequestInfo({
         url: api.url,
         data: {
-          ...(!api.excludeTenantFilter ? { tenantFilter: currentTenant } : null),
+          ...(!api.excludeTenantFilter ? { TenantFilter: currentTenant } : null),
           ...api.data,
         },
         waiting: true,

@@ -82,20 +82,19 @@ const Page = () => {
       tenantInTitle={false}
       title="Scheduled Tasks"
       apiUrl={
-        showHiddenJobs ? "/api/ListScheduledItems?ShowHidden=true" : "/api/ListScheduledItems"
+        showHiddenJobs ? "/api/ListScheduledItems?ListHidden=True" : "/api/ListScheduledItems"
       }
       queryKey={showHiddenJobs ? `ListScheduledItems-hidden` : `ListScheduledItems`}
       simpleColumns={[
-        "ExecutedTime",
-        "TaskState",
-        "Tenant",
         "Name",
-        "ScheduledTime",
+        "Tenant",
+        "TaskState",
         "Command",
         "Parameters",
         "PostExecution",
         "Recurrence",
-        "Results",
+        "ExecutedTime",
+        "ScheduledTime",
       ]}
       actions={actions}
       offCanvas={offCanvas}

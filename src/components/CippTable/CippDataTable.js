@@ -287,7 +287,6 @@ export const CippDataTable = (props) => {
         </>
       );
     },
-    enableGlobalFilterModes: true,
   });
 
   useEffect(() => {
