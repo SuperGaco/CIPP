@@ -231,7 +231,7 @@ export const Layout = (props) => {
         }}
       >
         <LayoutContainer>
-          {(currentTenant === "AllTenants" || !currentTenant) && !allTenantsSupport ? (
+          {currentTenant === "AllTenants" && !allTenantsSupport ? (
             <Box sx={{ flexGrow: 1, py: 4 }}>
               <Container maxWidth={false}>
                 <Grid container spacing={3}>

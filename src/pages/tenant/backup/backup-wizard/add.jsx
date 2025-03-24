@@ -1,12 +1,12 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { omit } from "lodash";
 import { Layout as DashboardLayout } from "/src/layouts/index.js";
 import CippFormPage from "/src/components/CippFormPages/CippFormPage";
 import CippFormComponent from "/src/components/CippComponents/CippFormComponent";
 import { useSettings } from "/src/hooks/use-settings";
 import { CippFormTenantSelector } from "../../../../components/CippComponents/CippFormTenantSelector";
+import { te } from "date-fns/locale";
 
 const CreateBackup = () => {
   const userSettingsDefaults = useSettings();
@@ -26,6 +26,7 @@ const CreateBackup = () => {
       antiphishing: true,
       CippWebhookAlerts: true,
       CippScriptedAlerts: true,
+      CippStandards: true,
     },
   });
 
@@ -44,7 +45,7 @@ const CreateBackup = () => {
           TenantFilter: tenantFilter,
           Name: `CIPP Backup - ${tenantFilter}`,
           Command: { value: `New-CIPPBackup` },
-          Parameters: { backupType: "Scheduled", ScheduledBackupValues: { ...omit(values, ['tenantFilter']) } },
+          Parameters: { backupType: "Scheduled", ScheduledBackupValues: { ...values } },
           ScheduledTime: unixTime,
           Recurrence: { value: "1d" },
         };
@@ -164,6 +165,14 @@ const CreateBackup = () => {
             type="switch"
             label="Scripted Alerts Configuration"
             name="CippScriptedAlerts"
+            formControl={formControl}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <CippFormComponent
+            type="switch"
+            label="Standards Configuration"
+            name="CippStandards"
             formControl={formControl}
           />
         </Grid>
